@@ -13,6 +13,48 @@ authors:
     email: "henry.santillan@untrm.edu.pe"
     affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
 
+  - family-names: "Leiva-Espinoza"
+    given-names: "Santos T."
+    orcid: "https://orcid.org/0000-0003-1710-1994"
+    email: "santos.leiva@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
+  - family-names: "Rabanal-Díaz"
+    given-names: "Gian F."
+    orcid: "https://orcid.org/0000-0001-5287-0698"
+    email: "grabanald15@unc.edu.pe"
+    affiliation: "Universidad Nacional de Cajamarca"
+
+  - family-names: "Vergara-Copacondori"
+    given-names: "Jhon Anthony"
+    orcid: "https://orcid.org/0000-0002-8583-4404"
+    email: "javergara@unc.edu.pe"
+    affiliation: "Universidad Nacional de Cajamarca"
+
+  - family-names: "Aguilar-Rafael"
+    given-names: "Vilma"
+    orcid: "https://orcid.org/0000-0001-6797-0093"
+    email: "vilma.aguilar.epg@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
+  - family-names: "Cubas-Vasquez"
+    given-names: "Luis Alberto"
+    orcid: "https://orcid.org/0009-0008-1354-2016"
+    email: "7343142221@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
+  - family-names: "Banda-Martinez"
+    given-names: "Duber"
+    orcid: "https://orcid.org/0009-0003-6100-6545"
+    email: "duber.banda.epg@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
+  - family-names: "Reyna-Rivera"
+    given-names: "Einstein R."
+    orcid: "https://orcid.org/0009-0002-7615-1123"
+    email: "7485589391@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
 contact:
   - family-names: "Santillan-Culquimboz"
     given-names: "Henry W."
@@ -40,6 +82,6 @@ url: "https://github.com/henrysantillan/monalonion-dissimulatum-study"
 
 license: "CC-BY-4.0"
 
-version: "1.1.0"
+version: "1.2.0"
 
 date-released: "2026-10-01"
