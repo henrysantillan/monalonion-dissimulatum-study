@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+
+message: "If you use these data or code, please cite this repository using the metadata below."
+
+title: "Data and code for: Monalonion dissimulatum (Miridae) in Peruvian cacao: Integration of DNA sequences and morphology for its identification and the study of its biological cycle in the Amazonas region"
+
+type: dataset
+
+authors:
+  - family-names: "Santillan-Culquimboz"
+    given-names: "Henry W."
+    orcid: "https://orcid.org/0000-0002-7384-0372"
+    email: "henry.santillan@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
+contact:
+  - family-names: "Santillan-Culquimboz"
+    given-names: "Henry W."
+    email: "henry.santillan@untrm.edu.pe"
+    affiliation: "Universidad Nacional Toribio Rodríguez de Mendoza"
+
+abstract: >
+  This repository contains the data and analysis code supporting the study
+  of Monalonion dissimulatum in cacao plantations in the Amazonas region
+  of Peru. The deposited materials include data used for morphological and
+  molecular identification, assessment of the biological cycle, and
+  evaluation of the incidence and damage associated with M. dissimulatum
+  in cacao plantations.
+
+keywords:
+  - "Miridae"
+  - "Monaloniini"
+  - "integrative taxonomy"
+  - "morphometrics"
+  - "DNA barcoding"
+
+repository-code: "https://github.com/henrysantillan/monalonion-dissimulatum-study"
+
+url: "https://github.com/henrysantillan/monalonion-dissimulatum-study"
+
+license: "CC-BY-4.0"
+
+version: "1.0.0"
+
+date-released: "2026-10-01"
