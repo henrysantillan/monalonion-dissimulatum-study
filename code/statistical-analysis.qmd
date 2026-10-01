@@ -1,0 +1,144 @@
+---
+title: "Statistical Analysis"
+author: "Henry W.Santillan-Culquimboz"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+output-dir: "../"
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(googlesheets4)
+
+url <- "https://docs.google.com/spreadsheets/d/1BJR6o_kZH9YCPTlQtPgWaHZdYpI2c1VOJOsdPbb3bPU/edit?gid=1264107449#gid=1264107449"
+
+df_incidence <- read_sheet(url, sheet = "sampling_sites") |>
+  mutate(across(c(incidence_pct, elevation), as.numeric))
+
+df_nymphs <- read_sheet(url, sheet = "nymph_morphology") |>
+  mutate(instar = factor(instar),
+         across(c(body_length_mm, body_width_mm), as.numeric))
+
+df_adults <- read_sheet(url, sheet = "adult_morphology") |>
+  mutate(sex = factor(sex))
+
+df_life <- read_sheet(url, sheet = "life_cycle") |>
+  mutate(instar = factor(instar))
+```
+
+# Incidence Analysis
+
+```{r}
+cor_pear <- cor.test(~ incidence_pct + elevation, data = df_incidence, method = "pearson")
+m1 <- lm(incidence_pct ~ elevation, data = df_incidence)
+cor_pear; summary(m1); confint(m1)
+
+par(mfrow = c(2, 2)); plot(m1); par(mfrow = c(1, 1))
+shapiro.test(residuals(m1)); lmtest::bptest(m1)
+
+ci    <- confint(m1)["elevation", ]
+p_txt <- if (cor_pear$p.value < 0.001) "< 0.001" else sprintf("%.3f", cor_pear$p.value)
+
+label_txt <- sprintf(
+  "Pearson: r = %.2f, p = %s\nLinear model: \u03B2 = %.3f (95%% CI: %.3f\u2013%.3f), R\u00B2 = %.3f",
+  cor_pear$estimate, p_txt, coef(m1)[["elevation"]], ci[1], ci[2], summary(m1)$r.squared
+)
+
+p_inc_alt <- ggplot(df_incidence, aes(elevation, incidence_pct)) +
+  geom_point(size = 2.6, alpha = 0.85) +
+  geom_smooth(method = "lm", se = TRUE, linewidth = 0.9) +
+  annotate("text", x = min(df_incidence$elevation), y = max(df_incidence$incidence_pct),
+           hjust = 0, vjust = 1, label = label_txt, size = 3.6) +
+  labs(x = "Elevation (m a.s.l.)", y = "Incidence (%)") +
+  theme_classic()
+
+p_inc_alt
+```
+
+# Morphological analyses of nymphal instars
+
+```{r}
+table_nymphs <- df_nymphs |>
+  pivot_longer(c(body_length_mm, body_width_mm),
+               names_to = "Variable", values_to = "value") |>
+  group_by(Instar = instar, Variable) |>
+  summarise(
+    n    = sum(!is.na(value)),
+    Mean = mean(value, na.rm = TRUE),
+    SD   = sd(value, na.rm = TRUE),
+    Min  = min(value, na.rm = TRUE),
+    Max  = max(value, na.rm = TRUE),
+    CV   = SD / Mean * 100,
+    .groups = "drop"
+  ) |>
+  transmute(
+    Instar, Variable, n,
+    `Mean ± SD` = sprintf("%.2f ± %.2f", Mean, SD),
+    Range       = sprintf("%.2f–%.2f", Min, Max),
+    `CV (%)`    = round(CV, 2)
+  )
+
+table_nymphs
+
+writexl::write_xlsx(table_nymphs, "table_nymphs.xlsx")
+```
+
+# Morphological analyses of adults
+
+```{r}
+table_adults <- df_adults |>
+  pivot_longer(-sex, names_to = "Variable", values_to = "value") |>
+  mutate(Variable = factor(Variable, levels = names(df_adults)[-1])) |>
+  group_by(Variable, Sex = sex) |>
+  summarise(
+    n    = sum(!is.na(value)),
+    Mean = mean(value, na.rm = TRUE),
+    SD   = sd(value, na.rm = TRUE),
+    Min  = min(value, na.rm = TRUE),
+    Max  = max(value, na.rm = TRUE),
+    CV   = SD / Mean * 100,
+    .groups = "drop"
+  ) |>
+  transmute(
+    Variable, Sex, n,
+    `Mean ± SD` = sprintf("%.2f ± %.2f", Mean, SD),
+    Range       = sprintf("%.2f–%.2f", Min, Max),
+    `CV (%)`    = round(CV, 2)
+  )
+
+table_adults
+
+writexl::write_xlsx(table_adults, "table_adults.xlsx")
+```
+
+# Analysis of the life cycle
+
+```{r}
+table_life <- df_life |>
+  mutate(instar = factor(instar,
+                         levels = c("egg", "instar I", "instar II", "instar III",
+                                    "instar IV", "instar V", "adult"))) |>
+  group_by(Stage = instar) |>
+  summarise(
+    n    = sum(!is.na(duration_days)),
+    Mean = mean(duration_days, na.rm = TRUE),
+    SD   = sd(duration_days, na.rm = TRUE),
+    Min  = min(duration_days, na.rm = TRUE),
+    Max  = max(duration_days, na.rm = TRUE),
+    CV   = SD / Mean * 100
+  ) |>
+  transmute(
+    Stage, n,
+    `Mean ± SD` = sprintf("%.2f ± %.2f", Mean, SD),
+    Range       = sprintf("%d–%d", as.integer(Min), as.integer(Max)),
+    `CV (%)`    = round(CV, 2)
+  )
+
+table_life
+
+writexl::write_xlsx(table_life, "table_life.xlsx")
+```
