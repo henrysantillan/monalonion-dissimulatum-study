@@ -5,8 +5,8 @@
 *.Rproj
 
 code/Results/
-manuscript/
-references/
+#manuscript/
+#references/
 
 ~$*
 
