@@ -2,7 +2,7 @@ cff-version: 1.2.0
 
 message: "If you use these data or code, please cite this repository using the metadata below."
 
-title: "Data and code for: Monalonion dissimulatum (Miridae) in Peruvian cacao: Integration of DNA sequences and morphology for its identification and the study of its biological cycle in the Amazonas region"
+title: "Data and code for: Morphological, molecular, and biological characterization of Monalonion dissimulatum Distant associated with cacao in Amazonas, Peru"
 
 type: dataset
 
@@ -82,6 +82,6 @@ url: "https://github.com/henrysantillan/monalonion-dissimulatum-study"
 
 license: "CC-BY-4.0"
 
-version: "1.2.0"
+version: "1.3.0"
 
 date-released: "2026-10-01"
