@@ -3,10 +3,16 @@
 .RData
 .Ruserdata
 *.Rproj
-.git
 
 code/Results/
 manuscript/
 references/
 
 ~$*
+
+.quarto/
+*_files/
+.DS_Store
+Thumbs.db
+
+.git
