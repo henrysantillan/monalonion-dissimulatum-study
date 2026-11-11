@@ -20,4 +20,4 @@ This repository contains the curated dataset and analysis code supporting the st
 
 The original data underlying the reported results are provided in Supplementary Tables S1–S4 (Supplementary Material S1), while the COI sequence alignment used for phylogenetic reconstruction is provided in Supplementary Material S2.
 
-The COI sequences generated in this study have been deposited in GenBank under accession numbers PX954299, PX954300, and PX954301.
+The COI sequences generated in this study have been deposited in [GenBank](https://www.ncbi.nlm.nih.gov/nuccore/) under accession numbers PX954299, PX954300, and PX954301.
