@@ -14,7 +14,7 @@ This repository contains the curated dataset and analysis code supporting the st
 
 - **`dataframe.xlsx`** — Curated dataset containing sampling-site information, incidence records, nymphal and adult morphometric measurements, and developmental-stage duration data. The same dataset is accessible through Google Sheets.
 - **`analysis.qmd`** — Analysis code used to generate the descriptive statistics and visualizations.
-- **`figures/`** — Original photographs and micrographs used to prepare the composite figures presented in the manuscript. These image files are archived in Zenodo.
+- **`figures.zip`** — Original photographs and micrographs used to prepare the composite figures presented in the manuscript. These image files are archived in Zenodo.
 
 ## Supplementary information
 
