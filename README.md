@@ -1,6 +1,6 @@
 # Morphological, molecular, and biological characterization of *Monalonion dissimulatum* Distant associated with cacao in Amazonas, Peru
 
-## Description
+## Description 
 
 This repository contains the curated dataset and analysis code supporting the study of *Monalonion dissimulatum* associated with cacao (*Theobroma cacao* L.) in Amazonas, Peru. The study integrates field assessments, morphological characterization, DNA barcoding analyses, and biological observations to describe the species, its incidence, and its life cycle under natural conditions.
 
